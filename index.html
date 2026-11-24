@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topbar">
+    <div class="brand">🍳 Recipe Finder</div>
+    <div class="tabs">
+      <button class="tab active" data-view="search">All Recipes</button>
+      <button class="tab" data-view="cookbook">My Cookbook (<span id="cookbookCount">0</span>)</button>
+    </div>
+    <button id="themeBtn" class="icon-btn" title="Toggle dark mode">🌙</button>
+  </nav>
+
+  <main class="wrap">
+    <form id="searchForm" class="search-row">
+      <input type="text" id="searchBox" placeholder="Search a dish, e.g. chicken, pasta, cake..." />
+      <button type="submit" class="primary">Search</button>
+    </form>
+
+    <div class="filter-row">
+      <label>Category
+        <select id="categoryFilter"><option value="all">All</option></select>
+      </label>
+      <label>Sort
+        <select id="sortFilter">
+          <option value="az">Name A to Z</option>
+          <option value="za">Name Z to A</option>
+        </select>
+      </label>
+      <span id="countText" class="count"></span>
+    </div>
+
+    <section id="loadingState" class="message hidden">
+      <div class="spinner"></div>
+      <p>Fetching delicious recipes...</p>
+    </section>
+
+    <section id="errorState" class="message error hidden">
+      <p id="errorText"></p>
+      <button id="retryBtn" class="primary">Retry</button>
+    </section>
+
+    <section id="emptyState" class="message hidden">
+      <p id="emptyText"></p>
+    </section>
+
+    <section id="recipeList" class="cards"></section>
+  </main>
+
+  <div id="overlay" class="overlay hidden">
+    <article class="dialog">
+      <button id="closeBtn" class="close" aria-label="Close">&times;</button>
+      <div id="dialogContent"></div>
+    </article>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
